@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from '../logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { loadUsers, loadPolls } from '../actions/shared';
+import { connect } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Login from './Login';
+import NavBar from './NavBar';
+import HomePage from './HomePage';
+import Leaderboard from './Leaderboard';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(loadUsers())
+    this.props.dispatch(loadPolls())
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <NavBar />
+        {this.props.authedUser === null
+          ? <Login />
+          : <div>
+              <Route path='/' exact component={HomePage} />
+              <Route path='/leaderboard' exact component={Leaderboard} />
+            </div>}
+      </BrowserRouter>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser
+  };
+}
+
+export default connect(mapStateToProps)(App);
