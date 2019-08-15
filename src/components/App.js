@@ -6,6 +6,8 @@ import Login from './Login';
 import NavBar from './NavBar';
 import HomePage from './HomePage';
 import Leaderboard from './Leaderboard';
+import VoteView from './VoteView';
+import NewQuestion from './NewQuestion';
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +24,8 @@ class App extends Component {
           : <div>
               <Route path='/' exact component={HomePage} />
               <Route path='/leaderboard' exact component={Leaderboard} />
+              <Route path='/question:id' exact component={VoteView} />
+              <Route path='/add' exact component={NewQuestion} />
             </div>}
       </BrowserRouter>
     );

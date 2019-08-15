@@ -11,7 +11,7 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.links.push({ label: "Home", to: "/"})
-    this.links.push({ label: "New Question", to: "/new"})
+    this.links.push({ label: "New Question", to: "/add"})
     this.links.push({ label: "Leaderboard", to: "/leaderboard"})
   }
 

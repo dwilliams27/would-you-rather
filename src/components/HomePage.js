@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Poll from './Poll';
 import PollList from './PollList'
 
 class HomePage extends Component {
