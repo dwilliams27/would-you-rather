@@ -14,6 +14,7 @@ class Login extends Component {
 
   render() {
     return <div className="dropdown">
+      <h3>Log in</h3>
       <button className="dropbtn">Select User</button>
       <div className="dropdown-content">
         {
