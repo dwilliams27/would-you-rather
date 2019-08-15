@@ -72,7 +72,7 @@ class VoteView extends Component {
 }
 
 function mapStateToProps({ polls, users, authedUser }, props) {
-  const id = props.match.params.id.substr(1)
+  const id = props.match.params.id
   if(!polls.pollMasterList[id]) {
     return {
       poll: null,

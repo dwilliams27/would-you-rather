@@ -35,6 +35,7 @@ class PollList extends Component {
       })
       show = arr;
     }
+    show.sort((a, b) => this.props.polls.pollMasterList[b].timestamp - this.props.polls.pollMasterList[a].timestamp);
     this.props.dispatch(populatePollList(show))
   }
 
